@@ -31,6 +31,7 @@ bb12=$bb5/update-motd.d
 bb13=$bb6/firmware
 bb14=$bb6/modules
 bb15=$bb13/ti-connectivity
+bb16=$bb13/edid
 bf=$bb1/Binaries
 kconf=$bb1/Kernel-Configs
 ### SET Mirror for ubuntu src https://launchpad.net/ubuntu/+archivemirrors
@@ -287,6 +288,8 @@ MRTFS () {
 		echo "$bb14" $CRE
 	mkdir $bb15
 		echo "$bb15" $CRE
+	mkdir $bb16
+		echo "$bb16" $CRE
 	echo ""
 	echo "$bb Directory Structure Creation Complete $nl"
 }
@@ -316,6 +319,8 @@ CPFS () {
 		echo "$bb2/LICENSE" $CRE			
 	cp -a $bf/11-image-support $bb12/
 		echo "$bb12/11-image-support" $CRE
+	cp -a $bf/1920x1080.bin $bb16/
+		echo "$bb16/1920x1080.bin" $CRE
 	clear
 	echo "$bb Configure Base Root Filesystem $nl"
 	echo ""
