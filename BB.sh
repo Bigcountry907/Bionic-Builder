@@ -61,6 +61,8 @@ bb20=$bb17/lib
 bb21=$bb20/aarch64-linux-gnu
 ### Directory $(pwd)/Bionic-Builder/Ubuntu-SRC/build/rootfs/lib/firmware/edid
 bb22=$bb13/edid
+### Directory $(pwd)/Bionic-Builder/Ubuntu-SRC/build/rootfs/etc/apt
+bb23=$bb5/apt/
 ###SRC BINARIES Directory $(pwd)/Bionic-Builder/Binaries
 bf=$bb1/Binaries
 ###KERNEL SRC FILES ROOT
@@ -111,7 +113,8 @@ BLDKER () {
 			cd $ksrc1
 			export ARCH=arm64
 			make ARCH=arm64 mrproper
-			make ARCH=arm64 hikey970_defconfig
+			cp -rf config_debian_hikey970 $ksrc1/.config
+			make ARCH=arm64 oldconfig
 			make ARCH=arm64 -j20
 			CMP
 		elif [[ $REPLY = "c" ]] || [[ $REPLY = "C" ]]; then
@@ -124,7 +127,8 @@ BLDKER () {
 			cd $ksrc1
 			export ARCH=arm64
 			make ARCH=arm64 mrproper
-			make ARCH=arm64 hikey970_defconfig
+			cp -rf config_debian_hikey970 $ksrc1/.config
+			make ARCH=arm64 oldconfig
 			make menuconfig
 			make ARCH=arm64 -j20
 			CMP
@@ -529,33 +533,18 @@ echo "$gb $bt INSTALL MODULES $nl"
 	export PATH=$(pwd)/gcc-arm-8.2/bin/:$PATH
 	export CROSS_COMPILE=$(pwd)/gcc-arm-8.2/bin/aarch64-linux-gnu-
 	aarch64-linux-gnu-gcc --version
-	cp -arv $ksrc1 $bb14/
-	echo "$bb $yt Kernel SRC copied to build tree $nl"
-	stop1
-if [[ ! -f $bb7/kernel.sh ]]; then
-	echo "CREATING KERNEL.sh"
-	touch $bb7/kernel.sh
-	echo "#!/bin/bash" | sudo tee -a $bb7/kernel.sh
-	echo "cd /lib/modules/linux" | sudo tee -a $bb7/kernel.sh
-	echo "export ARCH=arm64" | sudo tee -a $bb7/kernel.sh
-	echo "make ARCH=arm64 modules_install" | sudo tee -a $bb7/kernel.sh
-	chmod 755 $bb7/kernel.sh
-	echo "$bb7/kernel.sh" $CRE
-	stop1
-	echo " Runnung Kernel.sh"
-	sudo chroot $bb3 /root/kernel.sh
-	rm -rf $bb14/linux
-	rm -rf $bb7/kernel.sh
-else
-	sudo chroot $bb3 /root/kernel.sh
-	rm -rf $bb14/linux
-	rm -rf $bb7/kernel.sh
-fi
-stop1
+	cd $ksrc1
+	export ARCH=arm64
+	make ARCH=arm64 INSTALL_MOD_PATH=$bb3/ modules_install
 }
 
 INIT1 () {
 echo "$gb $bt INITIALIZE SYSTEM $nl"
+echo "$gb $bt UPDATE /etc/apt/sources.list $nl"
+cp -arv $bf/sources.list $bb23
+echo "$gb $bt COPY INIT.SH FOR SETUP $nl"
+cp -arv $bf/init.sh $bb5
+chmod 755 $bb5/init.sh
 echo "$yt Set Language -->>$nl" 
 echo "$gt Default Language US English $nl"
 sudo chroot $bb3 /root/locale.sh
