@@ -16,6 +16,13 @@ This program will setup everything you need for Hikey970.
 
 GETTING STARTED
 
+PREREQUSITE Install the require packages.
+sudo apt-get install img2simg binfmt-support qemu qemu-user-static debootstrap
+
+Make sure you install img2simg and not android-tools-fsutils.
+If the resize2fs /dev/sdd12 # max usage of disk give error during execution it is because you have android-tools-fsutils installed.
+Please uninstall android-tools-fsutils and install img2simg. Then you will be able to resise2fs /dev/sdd12.
+
 	To maintain consistent file paths please use the following to begin the setup.
 	
 	1) Please cd to your main prompt The files need to be cloned to ~/ 
