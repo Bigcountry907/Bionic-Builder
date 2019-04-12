@@ -495,8 +495,9 @@ img2simg $bb2/rootfs.img $bb2/$SPARSE_IMG
 echo "Cleaning Up"
 rm -rf $bb2/rootfs.img
 
-#echo "Compressing"
-# tar -C build -czvf $bb2/$SPARSE_IMG.tar.gz $bb2/$SPARSE_IMG
+cp -rf $bb2/$SPARSE_IMG $bb1/Install
+cd $bb1/Install
+tar -czvf Ubuntu-Bionic-Rootfs.tar.gz $SPARSE_IMG
 
 echo "ALL COMPLETE"
 ls -lha $bb2/$SPARSE_IMG
