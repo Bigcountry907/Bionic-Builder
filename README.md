@@ -24,10 +24,33 @@ If the resize2fs /dev/sdd12 # max usage of disk give error during execution it i
 Please uninstall android-tools-fsutils and install img2simg. Then you will be able to resise2fs /dev/sdd12.
 
 	To maintain consistent file paths please use the following to begin the setup.
+	A) Please run sudo -s to switch to root user before starting the project. BB.sh needs to be run as root user.
+		Running sudo ./BB.sh may work but there are many operations that require root.
+		The safest way to be sure everything works is to sudo -s before you start.
 	
 	1) Please cd to your main prompt The files need to be cloned to ~/ 
 		Then clone the repo.
 		git clone https://github.com/Bigcountry907/Bionic-Builder.git
+		
+	2) To start the build program first switch to root user.
+		sudo -s
+		
+	3) Run the Program and follow the menus and prompts. To start the program run.
+		./BB.sh
+	
+	4) Basically the menu system is set up in the order things need to be done.
+	
+		A) Start with #1 to create the rootfs.
+		
+		B) Run #2 to download and setup the tool chain download the kernel source and build the kernel.
+		
+		NOTE: You have to build the kernel to make the complete image. If you don't want to build the kernel then you 			will need to manually copy your kernel Image.gz as Image-hikey970-v4.9.gz and the Device tree to /boot in the 			image. You also need to copy your modules to /lib/modules.
+		
+		NOTE2: If you use the Bionic Builder to build the kernel then everything will be automatically installed into 			the image.
+		
+		C) Run option #3 after the rootfs and kernel have been created. This will install the kernel the device tree and 		    the modules into the image.
+		
+		D) Run option 4 to generate the flashable image.
 		
 Thank You 
 I hope you enjoy the Hikey970 Bionic-Builder
