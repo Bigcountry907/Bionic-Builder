@@ -44,22 +44,29 @@ Please uninstall android-tools-fsutils and install img2simg. Then you will be ab
 		
 		B) Run #2 to download and setup the tool chain download the kernel source and build the kernel.
 		
-		NOTE: You have to build the kernel to make the complete image. If you don't want to build the kernel then you 			will need to manually copy your kernel Image.gz as Image-hikey970-v4.9.gz and the Device tree to /boot in the 			image. You also need to copy your modules to /lib/modules.
+		NOTE: You have to build the kernel to make the complete image. If you don't want to build the kernel then you 
+		will need to manually copy your kernel Image.gz as Image-hikey970-v4.9.gz 
+		and the Device tree to /boot in the image. You also need to copy your modules to /lib/modules.
 		
-		NOTE2: If you use the Bionic Builder to build the kernel then everything will be automatically installed into 			the image.
+		NOTE2: If you use the Bionic Builder to build the kernel then everything will be automatically installed into 
+		the image.
 		
-		C) Run option #3 after the rootfs and kernel have been created. This will install the kernel the device tree and 		    the modules into the image.
+		C) Run option #3 after the rootfs and kernel have been created.
+		This will install the kernel the device tree and the modules into the image.
 		
 		D) Run option 4 to generate the flashable image.
 		
 		E) Copy the image to local machine if built on a server, it will be found in ~/Bionic-Builder/Install.
-			If you build on a local machine you can fastboot flash the images from the ~/Bionic-Builder/Install 				directory. I have also included the update_Hikey970.sh update_Hikey970.bat in the /install directory.
-			To use the scripts first rename the ubuntu_bionic.hikey970.V-1.0.sparse.img to rootfs.sparse.img.
-			then in linux run ./update_Hikey970.sh in windows run update_Hikey970.bat.
+		If you build on a local machine you can fastboot flash the images from the ~/Bionic-Builder/Install
+		directory. I have also included the update_Hikey970.sh update_Hikey970.bat in the /install directory.
+		To use the scripts first rename the ubuntu_bionic.hikey970.V-1.0.sparse.img to rootfs.sparse.img.
+		then in linux run ./update_Hikey970.sh in windows run update_Hikey970.bat.
 		NOTE: (Boot to FASTBOOT to install)	
-			Before running the flash scripts be sure to turn switch 3 to on and connect the hikey970 usb-c port next 			to the hdmi.
+		Before running the flash scripts be sure to turn switch 3 to on and connect the hikey970 usb-c port next
+		to the hdmi.
 		
-		NOTE: To see the Grub Menu connect the Usb-c port on the side of the board. The usb-c that is by itself with 				nothing else on that side of the board. Use putty or ssh in linux to connect the serial console.
+		NOTE: To see the Grub Menu connect the Usb-c port on the side of the board. The usb-c that is by itself with
+		nothing else on that side of the board. Use putty or ssh in linux to connect the serial console.
 		
 Thank You 
 I hope you enjoy the Hikey970 Bionic-Builder
