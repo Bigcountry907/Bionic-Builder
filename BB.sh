@@ -113,8 +113,7 @@ BLDKER () {
 			cd $ksrc1
 			export ARCH=arm64
 			make ARCH=arm64 mrproper
-			cp -rf config_debian_hikey970 $ksrc1/.config
-			make ARCH=arm64 oldconfig
+			make ARCH=arm64 hikey970_defconfig
 			make ARCH=arm64 -j20
 			CMP
 		elif [[ $REPLY = "c" ]] || [[ $REPLY = "C" ]]; then
@@ -126,9 +125,7 @@ BLDKER () {
 			aarch64-linux-gnu-gcc --version
 			cd $ksrc1
 			export ARCH=arm64
-			make ARCH=arm64 mrproper
-			cp -rf config_debian_hikey970 $ksrc1/.config
-			make ARCH=arm64 oldconfig
+			make ARCH=arm64 hikey970_defconfig
 			make menuconfig
 			make ARCH=arm64 -j20
 			CMP
