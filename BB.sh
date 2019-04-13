@@ -399,10 +399,6 @@ CPFS () {
 	chmod 444 $bb9/grub.cfg
 	cp -a $bf/initramfs-v4.9 $bb4/
 	chmod 644 $bb4/initramfs-v4.9
-	#cp -a $bf/Image-hikey970-v4.9.gz $bb4/
-	#chmod 600 $bb4/Image-hikey970-v4.9.gz
-	#cp -a $bf/kirin970-hikey970.dtb $bb4/
-	#chmod 644 $bb4/kirin970-hikey970.dtb
 	cp -a $bf/wl18xx-conf.bin $bb15/
 	chown 0.0 $bb15/wl18xx-conf.bin
 	chmod 755 $bb15/wl18xx-conf.bin
@@ -441,7 +437,8 @@ CPFS () {
 	touch $bb5/rc.local
 	echo "#!/bin/bash" | sudo tee -a $bb5/rc.local
 	echo "# re-generate ssh host key" | sudo tee -a $bb5/rc.local
-	echo "test -f /etc/ssh/ssh_host_rsa_key || dpkg-reconfigure openssh-server" | sudo tee -a $bb5/rc.local		
+	echo "test -f /etc/ssh/ssh_host_rsa_key || dpkg-reconfigure openssh-server" | sudo tee -a $bb5/rc.local
+	echo "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" | sudo tee -a $bb5/rc.local	
 	chmod 775 $bb5/rc.local
 	echo "$bb5/rc.local" $CRE
 	clear

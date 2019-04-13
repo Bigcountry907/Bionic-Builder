@@ -86,17 +86,7 @@ fi
 	fi
 sudo apt-get install tasksel
 echo "$gb $bt Installing Standard Packages $nl"
-sudo apt-get tasksel install standard
-		if [[ $? > 0 ]]; then
-			echo "$rt INSTALLATION FAILED $nl"
-			echo "$rt YOU HAVE TO FIX THIS AND TRY AGAIN $nl"
-			stop1
-			exit
-		else
-			echo "$gt INSTALATION SUCCESSFUL $nl"
-			echo "$gt INSTALLING DESKTOP $nl"
-			stop1
-		fi
+sudo tasksel install standard
 		
 		echo "$gb $bt ENTER Y IF YOU WANT TO INSTALL THE DESKTOP $nl"
 		echo ""
@@ -113,6 +103,7 @@ sudo apt-get tasksel install standard
 						echo "$gt INSTALATION SUCCESSFUL $nl"
 						echo "$gt YOUR SYSTEM IS READY $nl"
 						stop1
+					fi
 			else
 				echo "$gb $bt User Choice NOT TO INSTALL THE DESKTOP $nl"
 			fi	
