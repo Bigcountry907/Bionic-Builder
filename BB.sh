@@ -302,7 +302,7 @@ echo "$yt $it $bd (3) COPY KERNEL & DEVICE TREE / INSTALL KERNEL MODULES in ROOT
 echo ""
 echo "$yt $it $bd (4) GENERATE FLASHABLE AND COMPRESSED IMAGES $nl"
 echo ""
-echo "$yt $it $bd (5) FASTBOOT FLASH UBUNTU BIONIC 18.04 to Hikey970 $nl"
+echo "$yt $it $bd (5) UPDATE GRUB CONFIGURATION IN BOOT.IMG AND BOARD $nl"
 echo ""
 echo ""
 echo "$yt $rb $it $bd (99) EXIT BUILDER $nl"
