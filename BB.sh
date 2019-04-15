@@ -115,6 +115,7 @@ BLDKER () {
 			make ARCH=arm64 mrproper
 			make ARCH=arm64 hikey970_defconfig
 			make ARCH=arm64 -j20
+			INSKER2
 			CMP
 		elif [[ $REPLY = "c" ]] || [[ $REPLY = "C" ]]; then
 			echo "$nl"
@@ -128,6 +129,7 @@ BLDKER () {
 			make ARCH=arm64 hikey970_defconfig
 			make menuconfig
 			make ARCH=arm64 -j20
+			INSKER2
 			CMP
 		elif [[ $REPLY = "o" ]] || [[ $REPLY = "O" ]]; then
 			clear
@@ -140,6 +142,7 @@ BLDKER () {
 			export ARCH=arm64
 			make ARCH=arm64 oldconfig
 			make ARCH=arm64 -j20
+			INSKER2
 			CMP
 		elif [[ $REPLY = "x" ]] || [[ $REPLY = "X" ]]; then	
 			echo "$nl"
@@ -392,10 +395,12 @@ MRTFS () {
 }
 
 GRUB () {
-mkdir $bb1/install/mnt
+mkdir $bb1/Install/mnt
 sudo mount -o loop $bb1/Install/boot-hikey970.uefi.img $bb1/Install/mnt
+cp -arv $bf/grub.cfg $bb9/
 cp -arv $bf/grub.cfg $bb1/Install/mnt/boot/grub/
 sudo umount $bb1/Install/mnt
+rm -rf $bb1/Install/mnt
 CMP
 }
 
@@ -539,6 +544,42 @@ echo "$gb $bt INSTALL MODULES $nl"
 	cd $ksrc1
 	export ARCH=arm64
 	make ARCH=arm64 INSTALL_MOD_PATH=$bb3/ modules_install
+}
+
+INSKER2 () {
+echo "$gb $bt COPY KERNEL $nl"
+if [[ ! -f $bb1/Install/kernel-install/Image-hikey970-v4.9.gz ]]; then
+	cp -avrf $kimg $bb4/  
+	mv $bb4/Image.gz $bb1/Install/kernel-install/Image-hikey970-v4.9.gz
+	echo "$gb $bt Image Copied $nl"
+else
+	rm -rf $bb1/Install/kernel-install/Image-hikey970-v4.9.gz
+	cp -avrf $kimg $bb4/  
+	mv $bb4/Image.gz $bb1/Install/kernel-install/Image-hikey970-v4.9.gz
+	echo "$gb $bt Image Copied $nl"
+fi
+echo "$gb $bt COPY DEVICE TREE $nl"
+if [[ ! -f $bb1/Install/kernel-install/kirin970-hikey970.dtb ]]; then
+	cp -avrf $devtre $bb1/Install/kernel-install/
+	echo "$gb $bt DEVICE TREE Copied $nl"
+else
+	rm -rf $bb1/Install/kernel-install/kirin970-hikey970.dtb
+	cp -avrf $devtre $bb1/Install/kernel-install/
+	echo "$gb $bt DEVICE TREE Copied $nl"
+fi
+echo "$gb $bt INSTALL MODULES $nl"
+	cd $ksrc1
+	export ARCH=arm64
+	make ARCH=arm64 INSTALL_MOD_PATH=$bb1/Install/kernel-install/ modules_install
+	tar -czvf $bb1/Install/kernel-install/* $bb1/Install/kernel-install/Kernel-Install.tar.gz
+	if [[ ! -f $bb1/Install/kernel-install/K-INST.sh ]]; then
+	cp -arv $bf/K-INST.sh $bb1/Install/kernel-install/
+	echo "$gb $bt Istall Script Copied $nl"
+else
+	echo "$gb $bt Install Script Found$nl"
+fi
+	
+	 
 }
 
 INIT1 () {
