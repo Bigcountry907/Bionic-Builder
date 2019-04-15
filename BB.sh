@@ -391,6 +391,14 @@ MRTFS () {
 	chmod 755 $bb22
 }
 
+GRUB () {
+mkdir $bb1/install/mnt
+sudo mount -o loop $bb1/Install/boot-hikey970.uefi.img $bb1/Install/mnt
+cp -arv $bf/grub.cfg $bb1/Install/mnt/boot/grub/
+sudo umount $bb1/Install/mnt
+CMP
+}
+
 CPFS () {
 	cp -a $bf/fastboot.efi $bb10/
 	cp -a $bf/grub.cfg $bb9/
@@ -623,10 +631,9 @@ SMM () {
 				SMM
                 ;;
             
-            "5") ### Make Flashable Image
-				echo "$bb Make Flashable Image $nl"
-				MKIMG
-				stop1
+            "5") ### UPDATE GRUB
+				echo "$bb UPDATE GRUB.cfg $nl"
+				GRUB
 				SMM
                 ;;
 
