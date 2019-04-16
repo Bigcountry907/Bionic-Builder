@@ -479,7 +479,7 @@ CPFS () {
 
 MKIMG () {
 DISTRO=${DISTRO:-"bionic"}
-VERSION=V-1.0
+VERSION=V-2.0
 SYSTEM_SIZE=${SYSTEM_SIZE:-'2048'} # 1G
 echo "Building image" $SYSTEM_SIZE
 dd if=/dev/zero of=$bb2/rootfs.img bs=1M count=$SYSTEM_SIZE conv=sparse
@@ -494,8 +494,9 @@ else
 fi
 
 echo "Copying root"
+echo "$gt"
 cp -arv $bb3/* $bb2/loop/
-echo "Umount"
+echo "Umount $nl"
 umount $bb2/loop
 
 echo "Building sparse"
@@ -507,11 +508,16 @@ rm -rf $bb2/rootfs.img
 
 cp -rf $bb2/$SPARSE_IMG $bb1/Install
 cd $bb1/Install
-tar -czvf Ubuntu-Bionic-Rootfs.tar.gz $SPARSE_IMG
+tar -czvf $SPARSE_IMG.tar.gz $SPARSE_IMG
+rm -rf $bb2/$SPARSE_IMG
 
 echo "ALL COMPLETE"
-ls -lha $bb2/$SPARSE_IMG
-sha1sum $bb2/$SPARSE_IMG
+ls -lha $bb1/Install/$SPARSE_IMG
+sha1sum $bb1/Install/$SPARSE_IMG
+echo ""
+echo ""
+ls -lha $bb1/Install/Kernel-Install.tar.gz
+sha1sum $bb1/Install/Kernel-Install.tar.gz
 CMP
 }
 
@@ -548,6 +554,11 @@ echo "$gb $bt INSTALL MODULES $nl"
 
 INSKER2 () {
 echo "$gb $bt COPY KERNEL $nl"
+if [[ ! -d $bb1/Install/kernel-install/ ]]; then
+	mkdir $bb1/Install/kernel-install
+else
+	echo "$gb $bt kernel-install found $nl"
+fi
 if [[ ! -f $bb1/Install/kernel-install/Image-hikey970-v4.9.gz ]]; then
 	cp -avrf $kimg $bb4/  
 	mv $bb4/Image.gz $bb1/Install/kernel-install/Image-hikey970-v4.9.gz
@@ -571,15 +582,13 @@ echo "$gb $bt INSTALL MODULES $nl"
 	cd $ksrc1
 	export ARCH=arm64
 	make ARCH=arm64 INSTALL_MOD_PATH=$bb1/Install/kernel-install/ modules_install
-	tar -czvf $bb1/Install/kernel-install/Kernel-Install.tar.gz $bb1/Install/kernel-install/*
-	if [[ ! -f $bb1/Install/kernel-install/K-INST.sh ]]; then
-	cp -arv $bf/K-INST.sh $bb1/Install/kernel-install/
-	echo "$gb $bt Istall Script Copied $nl"
-else
-	echo "$gb $bt Install Script Found$nl"
-fi
-	
-	 
+echo "$gb $bt COMPRESS KERNEL DTB & MODULES $nl"
+tar cpzf $bb1/Install/Kernel-Install.tar.gz $bb1/Install/kernel-install/*
+echo "$gb $bt Kernel-Install.tar.gz CREATED $nl"
+
+	echo "CLEAN UP -->>> ALL FILES ARE NOW IN Kernel-Install.tar.gz "
+	echo "Removing Modules Folder"
+	rm -rf $bb1/Install/kernel-install
 }
 
 INIT1 () {
