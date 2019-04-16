@@ -571,7 +571,7 @@ echo "$gb $bt INSTALL MODULES $nl"
 	cd $ksrc1
 	export ARCH=arm64
 	make ARCH=arm64 INSTALL_MOD_PATH=$bb1/Install/kernel-install/ modules_install
-	tar -czvf $bb1/Install/kernel-install/* $bb1/Install/kernel-install/Kernel-Install.tar.gz
+	tar -czvf $bb1/Install/kernel-install/Kernel-Install.tar.gz $bb1/Install/kernel-install/*
 	if [[ ! -f $bb1/Install/kernel-install/K-INST.sh ]]; then
 	cp -arv $bf/K-INST.sh $bb1/Install/kernel-install/
 	echo "$gb $bt Istall Script Copied $nl"
