@@ -6,7 +6,7 @@ The Bionic-Builder is a All-In-One build script for Hikey970. This script will i
 	
 	B)  Downloads and install the ARM64 Tool-Chain needed for building the kernel.
 		The tool-chain used can be found here....
-		https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+	https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
 		gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
 
 	C) Downloads the Kernel Source needed for building the kernel.
@@ -54,11 +54,12 @@ not using the Bionic-Builder.
 Instructions for using the Bionic-Builder
 
 Note: This build script is made for running on Ubuntu or a Debain System.
-	The kernel is Cross-Compiled so you can not run the build script on the Hikey970 you must use a 	server or local Ubuntu / Debain system.
+	The kernel is Cross-Compiled so you can not run the build script on the Hikey970 you must use a server or local Ubuntu / Debain system.
 
 1) Install the packages require for the build.
-A) sudo apt-get install img2simg binfmt-support qemu qemu-user-static debootstrap 
-Notes: Make sure you install img2simg and not android-tools-fsutils. If the resize2fs /dev/sdd12 # max usage of disk give error during execution it is because you have android-tools-fsutils installed. Please uninstall android- tools-fsutils and install img2simg. Then you will be able to resise2fs /dev/sdd12. 
+
+		A) sudo apt-get install android-tools-fsutils binfmt-support qemu qemu-user-static debootstrap 
+.
 		B) Install Git if git is not installed yet.
 
 			1) 	cd ~/
