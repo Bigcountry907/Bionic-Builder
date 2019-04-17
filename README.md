@@ -71,7 +71,13 @@ Note: This build script is made for running on Ubuntu or a Debain System.
 			2)	{at the end of bashrc paste the below path.}
 				export PATH=~/bin:$PATH
 				source .bashrc
+			3) DOWNLOAD THE REPO TOOL
+				curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+				chmod a+x ~/bin/repo
 			
+			4) SETUP YOUR GITHUB ACCOUNT
+				git config --global user.name "???"
+				git config --global user.email "???@gmail.com"
 		C)  Clone repo and Start the Build Script
 
 			1.)	cd ~/
