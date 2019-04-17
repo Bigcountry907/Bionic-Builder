@@ -611,7 +611,7 @@ stop1
 DLSRC () {
 DISTRO=${DISTRO:-"bionic"}
 MIRRORS=${MIRRORS:-}
-SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential"}
+SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential,ccache,python-pip,kernel-package,libncurses5-dev,libssl-dev,gcc,gnupg,binfmt-support,qemu,qemu-user-static,debootstrap"}
 qemu-debootstrap --arch arm64 --include=$SOFTWARE --components=main,multiverse,universe $DISTRO $bb3 $mirror
 }
 
