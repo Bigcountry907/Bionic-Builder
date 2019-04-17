@@ -10,11 +10,11 @@ The Bionic-Builder is a All-In-One build script for Hikey970. This script will i
 		gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
 
 	C) Downloads the Kernel Source needed for building the kernel.
-This Kernel Source is configured specifically for Debain or Ubuntu Support.
-The kernel source is located at... 
-https://github.com/Bigcountry907/linux/tree/hikey970-v4.9-Debain-Working
-Be sure to use the branch hikey970-v4.9-Debain-Working if you clone the kernel
-not using the Bionic-Builder.
+		This Kernel Source is configured specifically for Debain or Ubuntu Support.
+		The kernel source is located at... 
+		https://github.com/Bigcountry907/linux/tree/hikey970-v4.9-Debain-Working
+		Be sure to use the branch hikey970-v4.9-Debain-Working if you clone the kernel
+		not using the Bionic-Builder.
 
 	D) Compiles the kernel and installs the Kernel the Device Tree and the Modules.
 		Everything is installed into the Ubuntu Bionic Image.
@@ -51,6 +51,8 @@ not using the Bionic-Builder.
 
 
 				More features can be added upon request.
+				
+				
 Instructions for using the Bionic-Builder
 
 Note: This build script is made for running on Ubuntu or a Debain System.
@@ -75,34 +77,31 @@ Note: This build script is made for running on Ubuntu or a Debain System.
 			1.)	cd ~/
 			2.)  	git clone https://github.com/Bigcountry907/Bionic-Builder.git
 			3.)	cd ~/Bionic-Builder
-4.)     sudo -s
-5.)   ./BB.sh
+			4.)     sudo -s
+			5.)   ./BB.sh
 
 
 
-Welcome to the Bionic-Builder Main Menu
 
-(1) CREATE MINIMAL BASE ROOT FILESYSTEM
+					Welcome to the Bionic-Builder Main Menu
 
- (2) BUILD KERNEL LINUX v4.9.78
+					(1) CREATE MINIMAL BASE ROOT FILESYSTEM
 
- (3) COPY KERNEL & DEVICE TREE / INSTALL KERNEL MODULES in ROOTFS
+ 					(2) BUILD KERNEL LINUX v4.9.78
 
- (4) GENERATE FLASHABLE AND COMPRESSED IMAGES
+					(3) COPY KERNEL & DEVICE TREE / INSTALL KERNEL MODULES in ROOTFS
 
- (5) UPDATE BOTH GRUB.CFG FILES ( BOARD AND BOOT IMAGE )
+ 					(4) GENERATE FLASHABLE AND COMPRESSED IMAGES
 
+ 					(5) UPDATE BOTH GRUB.CFG FILES ( BOARD AND BOOT IMAGE )
 
- (99) EXIT BUILDER
-
- MAKE CHOICE AND PRESS ENTER.
 
 
 THE BIONIC-BUILDER MENU OPTIONS
 
 	(1) CREATE MINIMAL BASE ROOT FILESYSTEM
 
-TO BUILD THE KERNEL ONLY SKIP TO OPTION 2. YOU DON'T HAVE TO RUN OPTION 1!	
+	TO BUILD THE KERNEL ONLY SKIP TO OPTION 2. YOU DON'T HAVE TO RUN OPTION 1!	
 		
 	A) Option number one uses debootstrap to download the base root filesystem.
 	    The rootfs will be located at ~/Bionic-Builder/Ubuntu-SRC/build/rootfs.
@@ -132,10 +131,10 @@ TO BUILD THE KERNEL ONLY SKIP TO OPTION 2. YOU DON'T HAVE TO RUN OPTION 1!
 	      kernel, device tree, and install the kernel modules. Options 2 and 3 will do this
 	      automatically. 
 
-If you have a KERNEL build already that you would like to use then
-you can manually copy the Image-hikey970-v4.9.gz and kirin970-hikey970.dtb to 
-~/Bionic-Builder/Ubuntu-SRC/build/rootfs/boot/
-Copy your kernel modules to: ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/lib/modules/
+			If you have a KERNEL build already that you would like to use then
+			you can manually copy the Image-hikey970-v4.9.gz and kirin970-hikey970.dtb to 
+			~/Bionic-Builder/Ubuntu-SRC/build/rootfs/boot/
+			Copy your kernel modules to: ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/lib/modules/
 
 	  D) After option 1 is complete run option 2 or manually install the kernel. Once the kernel and 
 	      Modules are installed you can run option 4 to generate a sparse flash-able system image.
@@ -155,15 +154,15 @@ BUILDING HIKEY 970 DEBAIN / UBUNTU KERNEL v4.9.78
 		    The kernel source will be downloaded as well. It will only download one time. After the
 		    tool-chain and kernel source are downloaded the KERNEL-BUILD Menu will display.
 
-The Kernel Source Directory 
-~/Bionic-Builder/Kernel-SRC/linux
-GITHUB REPO
-https://github.com/Bigcountry907/linux.git -b hikey970-v4.9-Debain-Working
+		The Kernel Source Directory 
+		~/Bionic-Builder/Kernel-SRC/linux
+		GITHUB REPO
+		https://github.com/Bigcountry907/linux.git -b hikey970-v4.9-Debain-Working
 		   
-The Tool-Chain Directory 
-~/Bionic-Builder/Tool-Chain/gcc-arm-8.2
-Tool-Chain Source 
-https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+		The Tool-Chain Directory 
+		~/Bionic-Builder/Tool-Chain/gcc-arm-8.2
+		Tool-Chain Source 
+		https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
 
 		B) Kernel Building Menu
 
@@ -175,7 +174,7 @@ https://developer.arm.com/tools-and-software/open-source-software/developer-tool
 
 		C) After the kernel build is complete you can find the kernel Image-hikey970-v4.9.gz 
 		    and the device tree kirin970-hikey970.dtb in the following path
-~/Bionic-Builder/Install/kernel-install/
+			~/Bionic-Builder/Install/kernel-install/
 
 		    The modules will be compressed into file Kernel-Install.tar.gz and the script 
 		    K-INST.sh will be found there also.
@@ -192,7 +191,7 @@ https://developer.arm.com/tools-and-software/open-source-software/developer-tool
 			#3 sudo -s		<<-- ON Hikey 970
 			#4 ./K-INST.sh	<<-- ON Hikey 970
 			After running k-inst.sh The kernel the device tree and the modules are
-      copied to the correct locations on the hikey 970.
+      			copied to the correct locations on the hikey 970.
 
 
 AUTOMATIC INSTALL HIKEY 970 DEBAIN / UBUNTU KERNEL v4.9.78
@@ -200,13 +199,13 @@ AUTOMATIC INSTALL HIKEY 970 DEBAIN / UBUNTU KERNEL v4.9.78
 	(3)  COPY KERNEL & DEVICE TREE / INSTALL KERNEL MODULES in ROOTFS
 
 		A) Option number THREE will copy the Image-hikey970-v4.9.gz and kirin970-hikey970.dtb 		    
-    to the rootfs. ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/boot/
+    			to the rootfs. ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/boot/
 
 		    The kernel modules will also be automatically installed to the proper directory :
 			~/Bionic-Builder/Ubuntu-SRC/build/rootfs/lib/modules/${uname -r}
 
-NOTE: If you are not building the complete system image and are just building the kernel
-to install on the Hikey970 board follow the previous instructions. D) Installing the kernel
+		NOTE: If you are not building the complete system image and are just building the kernel
+		to install on the Hikey970 board follow the previous instructions. D) Installing the kernel
 
 
 GENERATE ROOTFS IMAGE FOR FASTBOOT FLASH 
@@ -214,20 +213,20 @@ GENERATE ROOTFS IMAGE FOR FASTBOOT FLASH
 	(4)  GENERATE FLASHABLE AND COMPRESSED IMAGES
 
 	 	A) after you have run option #1 option #2 and option #3 you are ready to create the 		    
-    image that will be used for fastboot flash. Run option 4 completes the build.
+   		    image that will be used for fastboot flash. Run option 4 completes the build.
 
 	 	B) If you make changes to the rootfs or to grub.cfg you can do that in the build.
 		    The rootfs is at ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/
 		    You can make any changes you like to the rootfs and simply create a new rootfs image 		    
-        for flashing by running option 4 again. There is no need to run option 1 again.
+       		    for flashing by running option 4 again. There is no need to run option 1 again.
 
 		C) You can modify and rebuild the Kernel using option 2. Then use option 3 to install the 		    
-    new Kernel. After using option 2 and 3 you can use option 4 to create a new image that 		    
-    has the updated kernel. There is no need to run option 1 again.
+    		   new Kernel. After using option 2 and 3 you can use option 4 to create a new image that 		    
+   	  	   has the updated kernel. There is no need to run option 1 again.
 
 		 D) You can chroot ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/ this will switch your running 		     
-     systems root to ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/. Meaning any commands you 		     
-     run in the chroot environment are applied to your build.
+	     	    systems root to ~/Bionic-Builder/Ubuntu-SRC/build/rootfs/. Meaning any commands you 		     
+     	 	    run in the chroot environment are applied to your build.
 			~/Bionic-Builder/Ubuntu-SRC/build/rootfs/
 			For example sudo apt-get update sudo apt-get upgrade.
 			The update and the upgrade are applied to your build and not the host machine.
