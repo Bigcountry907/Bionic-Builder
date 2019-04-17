@@ -62,7 +62,9 @@ The kernel is Cross-Compiled so you can not run the build script on the Hikey970
 
 1) Install the packages require for the build.
 
-		A) A) sudo apt-get install -y ccache bc kmod cpio python-pip build-essential kernel-package fakeroot 					libncurses5-dev libssl-dev libc6-i386 gcc lzop git-core gnupg flex bison android-tools-fsutils binfmt-				support qemu qemu-user-static debootstrap
+		A) sudo apt-get install -y ccache python-pip build-essential kernel-package fakeroot libncurses5-dev 
+		   sudo apt-get install -y libssl-dev gcc  git-core gnupg 
+		   sudo apt-get install -y binfmt-support qemu qemu-user-static debootstrap simg2img
 		
 		B) Install Git if git is not installed yet.
 
