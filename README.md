@@ -55,8 +55,10 @@ The Bionic-Builder is a All-In-One build script for Hikey970. This script will i
 				
 Instructions for using the Bionic-Builder
 
-Note: This build script is made for running on Ubuntu or a Debain System.
-	The kernel is Cross-Compiled so you can not run the build script on the Hikey970 you must use a server or local Ubuntu / Debain system.
+Note: This build script is made for running on Ubuntu or a Debain System. UBUNTU 16.04 has a issue with MAN-DB so this will not work on ubuntu 16.04. Option 1 will not work on 16.04. The kernel building will still work on 16.04.
+I suggest using Ubuntu 18.04 to create the Bionic rootfs. I will add in a pre-downloaded rootfs to work around the ubuntu 16.04 problem.
+
+The kernel is Cross-Compiled so you can not run the build script on the Hikey970 you must use a server or local Ubuntu / Debain system.
 
 1) Install the packages require for the build.
 
