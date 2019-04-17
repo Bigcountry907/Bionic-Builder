@@ -435,6 +435,8 @@ CPFS () {
 	echo "rm -f /etc/ssh/ssh_host_*" | sudo tee -a $bb7/init.sh
 	echo "echo $qts$hk$qts > /etc/hostname" | sudo tee -a $bb7/init.sh
 	echo "echo $qts$adr$qts >> /etc/hosts" | sudo tee -a $bb7/init.sh
+	echo "exit" | sudo tee -a $bb7/init.sh
+	echo "exit 0" | sudo tee -a $bb7/init.sh
 	echo "rm /root/init.sh" | sudo tee -a $bb7/init.sh
 	chmod 0755 $bb7/init.sh
 	echo "$bb7/init.sh" $CRE
@@ -602,16 +604,14 @@ echo "$yt Set Language -->>$nl"
 echo "$gt Default Language US English $nl"
 sudo chroot $bb3 /root/locale.sh
 echo "gt Locale set $nl"
-stop1
 sudo chroot $bb3 /root/init.sh
-stop1
 }
 
 ### Command to download required ubuntu sources
 DLSRC () {
 DISTRO=${DISTRO:-"bionic"}
 MIRRORS=${MIRRORS:-}
-SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential,ccache,python-pip,kernel-package,libncurses5-dev,libssl-dev,gcc,gnupg,binfmt-support,qemu,qemu-user-static,debootstrap"}
+SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential,python-pip,kernel-package,libssl-dev,gnupg,binfmt-support,qemu,debootstrap,ccache,libncurses5-dev,gcc,"}
 qemu-debootstrap --arch arm64 --include=$SOFTWARE --components=main,multiverse,universe $DISTRO $bb3 $mirror
 }
 
@@ -839,9 +839,9 @@ set -ue -o pipefail
 ### Notify Start of Script
 resize -s 30 82
 clear
-echo "$bb Starting Build Script Ubuntu Bionic 18.04 Server $nl"
+echo "$bb Starting Build Script BIONIC-BUILDER UBUNTU 18.04 $nl"
 echo ""
-echo "$yt Bionic-Builder is a All in 1 Compiler Script For Hikey970 $nl"
+echo "$yt Bionic-Buddy is a All in 1 Setup Script For Hikey970 $nl"
 echo "$yt View Readme or visit https://github.com/Bigcountry907/Bionic-Builder $nl"
 echo "$yt Created by BigCountry907 @ https://discuss.96boards.org/c/products/hikey970 $nl"
 echo ""
