@@ -93,7 +93,6 @@ sudo tasksel install standard
 		read -n 1 -p "ENTER Y TO INSTALL N TO SKIP $nl $bb Y/N $nl"
 			if [[ $REPLY = "y" ]] || [[ $REPLY = "Y" ]]; then
 				echo "$gb $bt Installing XFCE4 Desktop $nl"
-				sudo apt-get install sddm
 				sudo apt-get install xubuntu-desktop
 					if [[ $? > 0 ]]; then
 						echo "$rt INSTALLATION FAILED $nl"

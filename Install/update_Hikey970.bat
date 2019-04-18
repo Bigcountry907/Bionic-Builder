@@ -21,7 +21,7 @@ fastboot flash fip fip.bin
 fastboot flash boot boot-hikey970.uefi.img
 	@if errorlevel 1 goto error
 
-fastboot flash system rootfs.sparse.img
+fastboot flash system ubuntu_bionic.hikey970.V-2.0.sparse.img
 	@if errorlevel 1 goto error
 
 @goto sucess
