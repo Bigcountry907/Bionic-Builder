@@ -482,7 +482,7 @@ CPFS () {
 MKIMG () {
 DISTRO=${DISTRO:-"bionic"}
 VERSION=V-2.0
-SYSTEM_SIZE=${SYSTEM_SIZE:-'2240'} # 1G
+SYSTEM_SIZE=${SYSTEM_SIZE:-'2560'} # 1G
 echo "Building image" $SYSTEM_SIZE
 dd if=/dev/zero of=$bb2/rootfs.img bs=1M count=$SYSTEM_SIZE conv=sparse
 mkfs.ext4 -L rootfs $bb2/rootfs.img
