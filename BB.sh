@@ -435,8 +435,8 @@ CPFS () {
 	echo "rm -f /etc/ssh/ssh_host_*" | sudo tee -a $bb7/init.sh
 	echo "echo $qts$hk$qts > /etc/hostname" | sudo tee -a $bb7/init.sh
 	echo "echo $qts$adr$qts >> /etc/hosts" | sudo tee -a $bb7/init.sh
-	echo "exit" | sudo tee -a $bb7/init.sh
 	echo "exit 0" | sudo tee -a $bb7/init.sh
+	echo "exit" | sudo tee -a $bb7/init.sh
 	echo "rm /root/init.sh" | sudo tee -a $bb7/init.sh
 	chmod 0755 $bb7/init.sh
 	echo "$bb7/init.sh" $CRE
@@ -446,6 +446,8 @@ CPFS () {
 	echo "locale-gen en_US.UTF-8" | sudo tee -a $bb7/locale.sh
 	echo "update-locale LANG=en_US.UTF-8" | sudo tee -a $bb7/locale.sh
 	echo "rm /root/locale.sh" | sudo tee -a $bb7/locale.sh
+	echo "exit 0" | sudo tee -a $bb7/locale.sh
+	echo "exit" | sudo tee -a $bb7/locale.sh
 	chmod 0755 $bb7/locale.sh
 	echo "$bb7/locale.sh" $CRE
 	SETMR
