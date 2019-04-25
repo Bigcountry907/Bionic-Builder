@@ -613,7 +613,8 @@ sudo chroot $bb3 /root/init.sh
 DLSRC () {
 DISTRO=${DISTRO:-"bionic"}
 MIRRORS=${MIRRORS:-}
-SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential,python-pip,kernel-package,libssl-dev,gnupg,binfmt-support,qemu,debootstrap,ccache,libncurses5-dev,gcc,"}
+SOFTWARE=${SOFTWARE:-"ssh,zsh,tmux,linux-firmware,vim-nox,net-tools,network-manager"}
+#SOFTWARE=${SOFTWARE:-"ssh,zsh,wget,tasksel,gnupg2,tmux,nano,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted,fakeroot,kernel-wedge,build-essential,python-pip,kernel-package,libssl-dev,gnupg,binfmt-support,qemu,debootstrap,ccache,libncurses5-dev,gcc,"}
 qemu-debootstrap --arch arm64 --include=$SOFTWARE --components=main,multiverse,universe $DISTRO $bb3 $mirror
 }
 

@@ -79,6 +79,23 @@ fi
 					exit
 				else
 					echo "The command ran succesfuly, continuing with script."
+					echo "Installing Packages For Compiling"
+					sudo apt-get install -y wget tasksel gnupg2 nano wpasupplicant parted fakeroot kernel-wedge build-essential python-pip kernel-package libssl-dev gnupg binfmt-support qemu debootstrap ccache libncurses5-dev gcc
+					sudo apt-get install -y autoconf libtool cmake pkg-config git python-dev swig3.0 libpcre3-dev nodejs-dev gawk wget diffstat bison flex
+					sudo apt-get install -y virtualenv
+					sudo apt-get install -y openjdk-8-jdk
+					sudo apt-get install -y pkg-config zip g++ zlib1g-dev unzip
+					sudo apt-get install -y libpq-dev
+					sudo apt-get install -y python-setuptools
+					sudo apt install -y python3-pip
+					sudo apt-get install -y waffle-utils
+					sudo apt-get install -y mesa-utils
+					sudo apt-get install -y ocl-icd-* opencl-headers
+					pip install --upgrade setuptools
+					pip install psycopg2-binary
+					echo "setup opencl"
+					sudo mkdir -p /etc/OpenCL/vendors/
+					echo "libmali.so" | sudo tee /etc/OpenCL/vendors/mali.icd
 					stop1
 				fi
 	else
